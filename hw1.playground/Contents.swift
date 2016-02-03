@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 //: ## Q1: Optionals
 class Words {
     var wordA : String!
@@ -22,31 +21,34 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: Yes, they are both optionals. The only difference being self.wordA and self.wordB will always be treated as if the optional was explicity unwrapped.
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(words: [String]) -> Bool {
+    class func arePalindromes(words: [String]) -> Bool {
         let reversedWords = words.map() {String($0.characters.reverse())}
         var numElements = words.count
         
-        for let i = 0; i < numElements; i++ {
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: We used let to create the variable i. i is a counter variable and will change as the loop iterates. However, as a static variable, reassignment of i beyond the original assignment will not be possible. In addition, the function will only return a boolean value if the if condition within the loop is satisfied. This does not cover all possible cases.
+//    
+// Additionally, the method must be a class method to be used by the class below.
 
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int]
+    func isAnagram() -> Bool {
+        var countLetters = [Character : Int]()
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
         
@@ -81,7 +83,7 @@ class Words {
             }
         }
         
-        return nil
+        return true
     }
 //: ### What is the problem with declaring **countLetters** as we do in **Line X**,
 //: ### and then using it in **Line Y**? Fix it (by only changing **Line X**).
@@ -89,8 +91,9 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
-    
+//: countLetters is never initialized. Since it is created within the body of a function and not the body of the class, it cannot behave like an instance variable and wait for initialization.
+//    
+//  Instance variables wordA and wordB cannot be accessed from a class method. The method must be made an instance method. Also, we cannot return nil as the method output must be a bool type value.
     
 }
 
