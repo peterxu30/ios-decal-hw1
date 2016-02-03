@@ -42,8 +42,7 @@ class Words {
 
 
 //: We used let to create the variable i. i is a counter variable and will change as the loop iterates. However, as a static variable, reassignment of i beyond the original assignment will not be possible. In addition, the function will only return a boolean value if the if condition within the loop is satisfied. This does not cover all possible cases.
-//    
-// Additionally, the method must be a class method to be used by the class below.
+//: Additionally, the method must be a class method to be used by the class below.
 
 
 //: ## Q3: More Functions and Object Initialization
@@ -92,8 +91,7 @@ class Words {
 
 
 //: countLetters is never initialized. Since it is created within the body of a function and not the body of the class, it cannot behave like an instance variable and wait for initialization.
-//    
-//  Instance variables wordA and wordB cannot be accessed from a class method. The method must be made an instance method. Also, we cannot return nil as the method output must be a bool type value.
+//: Instance variables wordA and wordB cannot be accessed from a class method. The method must be made an instance method. Also, we cannot return nil as the method output must be a bool type value.
     
 }
 
